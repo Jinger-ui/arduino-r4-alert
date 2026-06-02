@@ -1,0 +1,17 @@
+# PlatformIO
+.pio/
+.vscode/.browse*
+
+# Build / IDE
+*.o
+*.elf
+*.bin.map
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Secrets
+.env
+*.pem

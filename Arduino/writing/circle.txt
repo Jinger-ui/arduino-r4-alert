@@ -1,0 +1,441 @@
+{
+  "version": 1,
+  "parts": [
+    {
+      "id": "bb_1",
+      "type": "breadboard-full",
+      "parentId": null,
+      "position": {
+        "x": 0.0005704997841008974,
+        "y": 0,
+        "z": 0.010575056777434352
+      },
+      "terminals": []
+    },
+    {
+      "id": "arduino_1",
+      "type": "arduino-uno",
+      "parentId": null,
+      "position": {
+        "x": -0.1188,
+        "y": 0,
+        "z": 0
+      },
+      "terminals": []
+    },
+    {
+      "id": "c_electro_1",
+      "type": "capacitor-100uf",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "pin1",
+          "connection": "rail_top_positive_5"
+        },
+        {
+          "name": "pin2",
+          "connection": "rail_top_negative_5"
+        }
+      ],
+      "position": {
+        "x": -0.06731000000000001,
+        "y": 0.0045000000000000005,
+        "z": -0.02305
+      }
+    },
+    {
+      "id": "c_ceramic_1",
+      "type": "capacitor-0.1uf",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "pin1",
+          "connection": "rail_top_positive_10"
+        },
+        {
+          "name": "pin2",
+          "connection": "rail_top_negative_10"
+        }
+      ],
+      "position": {
+        "x": -0.05206999999999999,
+        "y": 0.0045000000000000005,
+        "z": -0.02305
+      }
+    },
+    {
+      "id": "r_data_1",
+      "type": "resistor-470",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "pin1",
+          "connection": "5a"
+        },
+        {
+          "name": "pin2",
+          "connection": "8a"
+        }
+      ],
+      "position": {
+        "x": -0.06477,
+        "y": 0.0045000000000000005,
+        "z": -0.013970000000000002
+      }
+    },
+    {
+      "id": "r_divider_1",
+      "type": "resistor-10000",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "pin1",
+          "connection": "15a"
+        },
+        {
+          "name": "pin2",
+          "connection": "18a"
+        }
+      ],
+      "position": {
+        "x": -0.039369999999999995,
+        "y": 0.0045000000000000005,
+        "z": -0.013970000000000002
+      }
+    },
+    {
+      "id": "r_divider_2",
+      "type": "resistor-10000",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "pin1",
+          "connection": "18b"
+        },
+        {
+          "name": "pin2",
+          "connection": "rail_bottom_negative_5"
+        }
+      ],
+      "position": {
+        "x": -0.051435,
+        "y": 0.0045000000000000005,
+        "z": 0.0064350000000000015
+      }
+    },
+    {
+      "id": "c_mic_1",
+      "type": "capacitor-0.1uf",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "pin1",
+          "connection": "25a"
+        },
+        {
+          "name": "pin2",
+          "connection": "rail_bottom_negative_10"
+        }
+      ],
+      "position": {
+        "x": -0.03492499999999999,
+        "y": 0.0045000000000000005,
+        "z": 0.005165
+      }
+    },
+    {
+      "id": "we_arduino_5v",
+      "type": "wire-end",
+      "parentId": "arduino_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "5V"
+        }
+      ],
+      "position": {
+        "x": 0.00068,
+        "y": 0.0092,
+        "z": 0.024
+      }
+    },
+    {
+      "id": "we_rail_vcc",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "rail_top_positive_1"
+        }
+      ],
+      "position": {
+        "x": -0.07747,
+        "y": 0.0045000000000000005,
+        "z": -0.0218
+      }
+    },
+    {
+      "id": "we_arduino_gnd",
+      "type": "wire-end",
+      "parentId": "arduino_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "GND"
+        }
+      ],
+      "position": {
+        "x": 0.005760000000000001,
+        "y": 0.0092,
+        "z": 0.024
+      }
+    },
+    {
+      "id": "we_rail_gnd",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "rail_top_negative_1"
+        }
+      ],
+      "position": {
+        "x": -0.07747,
+        "y": 0.0045000000000000005,
+        "z": -0.024300000000000002
+      }
+    },
+    {
+      "id": "we_rail_gnd_bot",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "rail_bottom_negative_1"
+        }
+      ],
+      "position": {
+        "x": -0.07747,
+        "y": 0.0045000000000000005,
+        "z": 0.024300000000000002
+      }
+    },
+    {
+      "id": "we_bridge_gnd",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "rail_top_negative_25"
+        }
+      ],
+      "position": {
+        "x": -0.006349999999999998,
+        "y": 0.0045000000000000005,
+        "z": -0.024300000000000002
+      }
+    },
+    {
+      "id": "we_bridge_gnd2",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "rail_bottom_negative_25"
+        }
+      ],
+      "position": {
+        "x": -0.006349999999999998,
+        "y": 0.0045000000000000005,
+        "z": 0.024300000000000002
+      }
+    },
+    {
+      "id": "we_arduino_d6",
+      "type": "wire-end",
+      "parentId": "arduino_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "D6"
+        }
+      ],
+      "position": {
+        "x": 0.01106,
+        "y": 0.0092,
+        "z": -0.024
+      }
+    },
+    {
+      "id": "we_data_in",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "5b"
+        }
+      ],
+      "position": {
+        "x": -0.06858,
+        "y": 0.0045000000000000005,
+        "z": -0.01143
+      }
+    },
+    {
+      "id": "we_data_out",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "8b"
+        }
+      ],
+      "position": {
+        "x": -0.06095999999999999,
+        "y": 0.0045000000000000005,
+        "z": -0.01143
+      }
+    },
+    {
+      "id": "we_arduino_a0",
+      "type": "wire-end",
+      "parentId": "arduino_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "A0"
+        }
+      ],
+      "position": {
+        "x": 0.013600000000000001,
+        "y": 0.0092,
+        "z": 0.024
+      }
+    },
+    {
+      "id": "we_audio_in",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "18c"
+        }
+      ],
+      "position": {
+        "x": -0.035559999999999994,
+        "y": 0.0045000000000000005,
+        "z": -0.00889
+      }
+    },
+    {
+      "id": "we_mic_vcc",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "15b"
+        }
+      ],
+      "position": {
+        "x": -0.043179999999999996,
+        "y": 0.0045000000000000005,
+        "z": -0.01143
+      }
+    },
+    {
+      "id": "we_rail_vcc2",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "rail_top_positive_20"
+        }
+      ],
+      "position": {
+        "x": -0.02159,
+        "y": 0.0045000000000000005,
+        "z": -0.0218
+      }
+    },
+    {
+      "id": "we_audio_cap",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "25b"
+        }
+      ],
+      "position": {
+        "x": -0.017779999999999994,
+        "y": 0.0045000000000000005,
+        "z": -0.01143
+      }
+    },
+    {
+      "id": "we_audio_signal",
+      "type": "wire-end",
+      "parentId": "bb_1",
+      "terminals": [
+        {
+          "name": "t1",
+          "connection": "25c"
+        }
+      ],
+      "position": {
+        "x": -0.017779999999999994,
+        "y": 0.0045000000000000005,
+        "z": -0.00889
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w_power_vcc",
+      "color": "red",
+      "from": "we_arduino_5v",
+      "to": "we_rail_vcc"
+    },
+    {
+      "id": "w_power_gnd",
+      "color": "black",
+      "from": "we_arduino_gnd",
+      "to": "we_rail_gnd"
+    },
+    {
+      "id": "w_gnd_bridge",
+      "color": "black",
+      "from": "we_bridge_gnd",
+      "to": "we_bridge_gnd2"
+    },
+    {
+      "id": "w_neopixel_data",
+      "color": "yellow",
+      "from": "we_arduino_d6",
+      "to": "we_data_in"
+    },
+    {
+      "id": "w_audio_signal",
+      "color": "green",
+      "from": "we_arduino_a0",
+      "to": "we_audio_in"
+    },
+    {
+      "id": "w_mic_power",
+      "color": "red",
+      "from": "we_mic_vcc",
+      "to": "we_rail_vcc2"
+    }
+  ]
+}
