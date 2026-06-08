@@ -1,6 +1,6 @@
 # Arduino UNO R4 WiFi — 声控警示灯
 
-基于 **Arduino UNO R4 WiFi** 的声音检测警示项目：绿灯常亮，检测到声音时 WS2812 灯带显示彩虹渐变流动。
+基于 **Arduino UNO R4 WiFi** 的声音检测警示项目：绿灯常亮，检测到声音时 WS2812 灯带红色常亮，声音结束后约 1 秒熄灭。
 
 ## 硬件
 
@@ -13,8 +13,9 @@
 ## 行为
 
 - **安静**：D3 绿灯常亮，灯带熄灭  
-- **有声**：绿灯仍亮，灯带彩虹渐变沿灯带流动（音量越大流动略快）  
-- **恢复安静约 0.5 s**：灯带熄灭  
+- **有声**：绿灯仍亮，灯带**全红常亮**  
+- **声音结束约 1 s 后**：灯带熄灭  
+- **上电约 1 s 内保持安静**：自动校准环境噪声阈值  
 
 ## 编译与上传
 
@@ -34,8 +35,9 @@ Windows 也可双击 `Arduino/upload.bat`，按提示输入 COM 口。
 编辑 `Arduino/src/config.h`：
 
 - `NUM_PIXELS` — 灯带 LED 数量  
-- `STRIP_BRIGHTNESS` / `GRADIENT_HUE_STEP` — 灯带效果  
-- `AUDIO_DEVIATION_HIGH` / `LOW` — 声音检测灵敏度  
+- `STRIP_BRIGHTNESS` — 红色亮度  
+- `SILENCE_RECOVERY_MS` — 无声后保持红灯时间（默认 1000 ms）  
+- `AUDIO_MARGIN_HIGH` / `LOW` — 上电校准余量  
 
 ## 目录结构
 
