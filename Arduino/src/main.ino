@@ -22,11 +22,12 @@ static uint8_t sampleIndex = 0;
 static bool samplesReady = false;
 static bool soundDetected = false;
 
-// 上电校准后的触发/释放阈值
 static uint16_t acTriggerHigh = AUDIO_DEVIATION_HIGH;
 static uint16_t acTriggerLow = AUDIO_DEVIATION_LOW;
 
 static uint16_t calcAcFromBuffer(const uint16_t *buf, uint8_t n);
+static uint16_t calcPeakToPeak(const uint16_t *buf, uint8_t n);
+static uint16_t audioLevelFromBuffer(const uint16_t *buf, uint8_t n);
 static void calibrateNoiseFloor(void);
 static void greenLedOn(void);
 static void stripInit(void);
@@ -54,8 +55,11 @@ void loop() {
 
 void setup() {
     DEBUG_INIT();
-    DEBUG_PRINTLN(F("D3 green ON | D6 strip RED on sound"));
+    DEBUG_PRINTLN(F("D3 green ON | D6 strip RED on PC audio"));
     DEBUG_PRINTLN(F("UNO R4 WiFi"));
+    DEBUG_PRINTLN(AUDIO_LINE_IN_MODE
+        ? F("Mode: line-in (keep PC silent during boot cal)")
+        : F("Mode: mic/ambient"));
 
     pinMode(PIN_AUDIO_IN, INPUT);
     greenLedOn();
@@ -107,6 +111,24 @@ static uint16_t calcAcFromBuffer(const uint16_t *buf, uint8_t n) {
     return ac;
 }
 
+static uint16_t calcPeakToPeak(const uint16_t *buf, uint8_t n) {
+    uint16_t mn = 1023;
+    uint16_t mx = 0;
+    for (uint8_t i = 0; i < n; i++) {
+        mn = min(mn, buf[i]);
+        mx = max(mx, buf[i]);
+    }
+    return mx - mn;
+}
+
+static uint16_t audioLevelFromBuffer(const uint16_t *buf, uint8_t n) {
+#if AUDIO_LINE_IN_MODE
+    return calcPeakToPeak(buf, n);
+#else
+    return calcAcFromBuffer(buf, n);
+#endif
+}
+
 static void calibrateNoiseFloor(void) {
     uint16_t maxQuietAc = 0;
 
@@ -116,7 +138,7 @@ static void calibrateNoiseFloor(void) {
             snap[i] = analogRead(PIN_AUDIO_IN);
             delay(8);
         }
-        maxQuietAc = max(maxQuietAc, calcAcFromBuffer(snap, 5));
+        maxQuietAc = max(maxQuietAc, audioLevelFromBuffer(snap, 5));
     }
 
     acTriggerLow = maxQuietAc + AUDIO_MARGIN_LOW;
@@ -180,12 +202,7 @@ static void processAudioBatch(uint32_t nowMs) {
         pk = max(pk, s);
     }
     uint16_t avg = sum / SAMPLES_FOR_PEAK;
-    uint16_t ac = 0;
-    for (uint8_t i = 0; i < SAMPLES_FOR_PEAK; i++) {
-        uint16_t s = audioSamples[i];
-        uint16_t d = (s > avg) ? (s - avg) : (avg - s);
-        ac = max(ac, d);
-    }
+    uint16_t ac = audioLevelFromBuffer(audioSamples, SAMPLES_FOR_PEAK);
     soundDetected = detectSound(ac);
     if (soundDetected) {
         lastSoundDetectedMs = nowMs;
